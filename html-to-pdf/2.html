@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        table {
+            border: solid 1px red;
+            border-collapse: collapse;
+        }
+
+
+        td {
+            font: normal 12px/17px Arial;
+            padding: 2px;
+            width: 100px;
+            color: green;
+        }
+
+
+        th {
+            font: bold 12px/17px Arial;
+            text-align: left;
+            padding: 4px;
+            border-bottom: 1px solid #333;
+        }
+        table tbody tr:nth-child(odd) {
+            background: #FFFFEE;
+        }
+        table tbody tr:nth-child(even) {
+            background: #FFF38F;
+            /*偶数行样式*/
+        }
+
+
+        .selected {
+            background: #FF6500;
+            color: #fff;
+        }
+        .hide-content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+        <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>暂住地</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 母表  -->
+            <tr class="parent" id="row_01">
+                <td colspan="2"><strong>前台设计组</strong>
+                    
+                </td>
+                <td>
+                    <button>展开</button>
+                </td>
+            </tr>
+            <!-- 子表 一开始隐藏-->
+            <tr class="hide-content">
+                <td colspan="3">
+                    <table style="width: inherit">
+                        <tr class="child_row_01">
+                            <td>张三</td>
+                            <td>男</td>
+                            <td>重庆江北</td>
+                        </tr>
+                        <tr class="child_row_01">
+                            <td>李四</td>
+                            <td>女</td>
+                            <td>浙江杭州</td>
+                        </tr>         
+                    </table>
+                </td>
+            </tr>
+
+           
+            <tr class="parent" id="row_02">
+                <td colspan="2"><strong>前台开发组</strong></td>
+                <td><button>展开</button></td>
+            </tr>
+            <tr class="hide-content animated">
+                <td colspan="3">
+                    <table>
+                        <tr class="child_row_02">
+                            <td>王五</td>
+                            <td>男</td>
+                            <td>四川成都</td>
+                        </tr>
+                        <tr class="child_row_02">
+                            <td>赵六</td>
+                            <td>女</td>
+                            <td>上海浦东</td>
+                        </tr>
+            
+                    </table>
+                </td>
+            </tr>
+
+          
+        </tbody>
+           
+    </table>
+
+    <script src="./jquery.js"></script>
+       
+    <script type="text/javascript">
+        //要实现各行变色效果，添加以下jQuery代码:
+        $(function () {
+           
+           $("button").click(function() {
+               var parentTr =  $(this).parent().parent()
+               var sonTable = parentTr.next();
+               if(sonTable.is(":hidden")) {
+                    $(".hide-content").hide();
+                    sonTable.fadeIn();
+                    
+               } else {
+                    sonTable.fadeOut()
+               }
+            
+           })
+
+
+           return
+            
+        });
+    </script>
+</body>
+
+</html>
