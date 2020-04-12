@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   首页
   <div>
@@ -15,12 +17,13 @@
   <a href="/axios.html">使用axios测试cookie</a>
   <div>
     <ol>
-      <li>注意后台的cookie 设置了有效时间，时间到了  cookie就没有了</li>
+      <li>注意后台的cookie 设置了有效时间，时间到了 cookie就没有了</li>
       <li>cookie签名以后，就是一堆乱七八糟的东西，记得要给app.use(cookieParser("miyao")) 传递一个字符串签名参数</li>
     </ol>
   </div>
+  <script src="https://cdn.bootcss.com/axios/0.19.2/axios.js"></script>
   <script>
-    document.cookie="a=b"
+    document.cookie = "a=b"
 
     let s1 = document.querySelector("#set-btn")
     let s2 = document.querySelector("#get-btn")
@@ -28,27 +31,37 @@
     s1.addEventListener("click", handelSet, false)
     s2.addEventListener("click", handelGet, false)
 
-    function  handelSet() {
+    function handelSet() {
       createXhr("/set-cookie")
     }
 
-    function  handelGet() {
+    function handelGet() {
       createXhr("/get-cookie")
     }
 
     function createXhr(url) {
       let xhr = new XMLHttpRequest()
 
-      xhr.open("get",url)
+      xhr.open("get", url)
 
-      xhr.onreadystatechange = function() {
-        if(xhr.readyState === 4 && xhr.status === 200) {
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
           console.log(xhr.responseText)
         }
       }
 
       xhr.send(null)
     }
+
+    axios({
+      url: "http://localhost:3001/3001-test-withCredentials-cookie",
+      method: 'post'
+    }).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   </script>
 </body>
+
 </html>
