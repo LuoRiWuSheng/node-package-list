@@ -20,6 +20,10 @@
 
 ## 文件切片上传，断点上传(待补充)
 
+## chalk 终端字体颜色
+
+## choikdar 监控文件变化
+> 主要是使用 fs.watch和fs.watchFile进行封装，达到易用高效
 
 ## cookie-parser 使用
 
