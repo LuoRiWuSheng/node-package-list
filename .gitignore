@@ -4,3 +4,5 @@ dist
 .vs
 .docx
 test
+package-lock.json
+yarn.lock
